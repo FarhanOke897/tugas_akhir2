@@ -1,0 +1,183 @@
+/* css/style.css (Versi Final - Navbar Transparan & Teks Putih) */
+
+/* Spinner */
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Back to Top */
+.back-to-top a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 50px;
+    right: 40px;
+    width: 50px;
+    height: 40px;
+    font-size: 18px;
+    background: var(--bs-primary);
+    color: var(--bs-white);
+    transition: 0.5s;
+    z-index: 999;
+    transform: skew(18deg);
+}
+.back-to-top a:hover { background: var(--bs-dark); color: var(--bs-white); }
+.back-to-top a i { transform: skew(-18deg); }
+
+/* Tombol (Button) */
+.btn { font-weight: 600; transition: .5s; }
+.btn.btn-primary, .btn.btn-dark { border: none; transform: skew(18deg); transition: 0.5s; }
+.btn.btn-primary { color: var(--bs-white); }
+.btn.btn-dark { color: var(--bs-primary); }
+.btn.btn-primary span, .btn.btn-primary i, .btn.btn-dark span, .btn.btn-dark i { display: inline-block; transform: skew(-18deg); }
+.btn.btn-primary:hover { background: var(--bs-white); color: var(--bs-dark); }
+.btn.btn-dark:hover { color: var(--bs-white); background: var(--bs-primary); }
+
+/* Navbar */
+.header-top { height: 100%; position: relative; }
+.header-top::after {
+    content: "";
+    position: absolute;
+    width: 16%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--bs-dark);
+    z-index: 1;
+}
+.navbar-brand { position: relative; overflow: hidden; padding: 40px 50px 40px 0; }
+.navbar-brand::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 600px;
+    top: -200px;
+    right: 18px;
+    background: var(--bs-dark);
+    transform: rotate(-18deg);
+    z-index: -1;
+}
+.header-top .navbar-brand { position: relative; z-index: 99; }
+.nav-bar .navbar { z-index: 9; }
+.navbar .navbar-nav .nav-item { display: flex; align-items: center; padding: 0; margin-right: 20px; }
+/* Mengubah warna link menjadi putih agar terbaca di background gelap */
+.navbar-light .navbar-nav .nav-link { 
+    padding: 0; 
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+}
+.navbar-light .navbar-nav .nav-item:hover .nav-link,
+.navbar-light .navbar-nav .nav-item .nav-link.active {
+    color: var(--bs-primary);
+}
+
+/* Navbar Tampilan Desktop */
+@media (min-width: 992px) {
+    .header-top::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 45px;
+        top: 0;
+        right: 0;
+        background: var(--bs-dark);
+        z-index: -1;
+    }
+    .navbar-brand-2 { display: none; }
+    /* Menghapus background dari navbar desktop agar transparan */
+    .navbar .navbar-nav { 
+        width: 100%; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+        background: transparent;
+    }
+    .nav-shaps-2 { position: absolute; width: 12%; height: 100%; top: 0; right: 0; background: var(--bs-dark); z-index: -1; }
+}
+
+/* Navbar Tampilan Mobile */
+@media (max-width: 991px) {
+    .header-top { max-height: 80px; }
+    .navbar { justify-content: space-between; }
+    .header-top .container { max-height: 80px; }
+    .navbar-brand { display: none; }
+    .navbar-brand-2 { position: relative; overflow: hidden; width: 180px; height: 100%; padding: 0; display: flex; align-items: center; z-index: 99; }
+    .navbar-brand-2::before { content: ""; position: absolute; width: 100%; height: 600px; top: -200px; right: 18px; background: var(--bs-dark); transform: rotate(-18deg); z-index: -1; }
+    .navbar.navbar-light { height: 100%; padding: 0; }
+    .navbar .navbar-nav .nav-item { padding: 12px; align-items: start; }
+    .navbar .navbar-nav { margin-top: 20px; padding: 10px 20px; margin-left: 0; }
+    /* Mengubah background menu mobile menjadi gelap agar konsisten */
+    .navbar .navbar-collapse { background: var(--bs-dark); }
+    .navbar.navbar-expand-lg .navbar-toggler { padding: 8px 15px; border: none; background: var(--bs-primary); color: var(--bs-dark); transform: skew(18deg); }
+    .navbar.navbar-expand-lg .navbar-toggler span { transform: skew(-18deg); }
+}
+
+/* Carousel */
+.hero-bg-half-1 {
+    background-image: url(../img/pakjoko2.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain; 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    filter: grayscale(15%);
+}
+.header-carousel .header-carousel-item { height: 1000px; }
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next { position: absolute; width: 60px; height: 60px; transform: skew(18deg); background: var(--bs-white); color: var(--bs-primary); font-size: 26px; display: flex; align-items: center; justify-content: center; transition: 0.5s; }
+.header-carousel .owl-nav .owl-prev { bottom: 30px; left: 51%; }
+.header-carousel .owl-nav .owl-next { bottom: 30px; right: 51%; }
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover { background: var(--bs-primary); color: var(--bs-white); }
+.header-carousel .header-carousel-item .carousel-caption { position: absolute; width: 100%; height: 100%; left: 0; bottom: 0; background: rgba(0, 0, 0, .4); display: flex; align-items: center; z-index: 9; }
+@media (max-width: 991px) { .header-carousel.owl-carousel, .header-carousel .header-carousel-item { height: 700px; } }
+
+/* About Page */
+.about { position: relative; overflow: hidden; background: var(--bs-dark); }
+.about .about-content { position: relative; z-index: 9; }
+.about .about-img-col { position: relative; z-index: 9; }
+@media (min-width: 992px) { .about::before { content: ""; position: absolute; width: 70%; height: 100%; top: 0; right: -400px; background: var(--bs-primary); transform: skew(28deg); } }
+
+/* Blog Section */
+.blog { overflow: hidden; }
+.blog .blog-item { position: relative; border: 1px solid var(--bs-primary); transition: 0.5s; }
+.blog .blog-item .blog-img { position: relative; overflow: hidden; }
+.blog .blog-item .blog-img img { transition: 0.5s; }
+.blog .blog-item:hover .blog-img img { transform: scale(1.3); }
+.blog-carousel .owl-dots { margin-top: 25px; }
+
+/* Footer */
+.footer { overflow: hidden; background: var(--bs-dark); }
+.footer .footer-item a { line-height: 35px; color: var(--bs-white); transition: 0.5s; }
+.footer .footer-item p { line-height: 35px; color: rgba(255, 255, 255, 0.7); }
+.footer .footer-item a:hover { letter-spacing: 1px; color: var(--bs-primary); }
+
+/* Utilitas & Penyesuaian Kustom */
+#spinner .spinner-border { width: 3rem; height: 3rem; }
+.header-top .navbar-brand { height: 125px; }
+.header-top .topbar { height: 45px; }
+.header-top .nav-bar { height: 80px; }
+.content-after-header { margin-top: 90px; }
+.article-page-content h1 { font-size: 2.8rem; color: white; margin-bottom: 1.5rem; }
+.article-page-content p, 
+.article-page-content li { font-size: 1.25rem; color: white; line-height: 1.7; }
+.contact-form-container { min-height: 100vh; }
+.contact-form-container textarea { height: 150px; }
+.blog-item .blog-img a { display: block; overflow: hidden; height: 250px; }
+.blog-item .blog-img img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 768px) {
+    .article-page-content h1 { font-size: 2.2rem; }
+    .article-page-content p, .article-page-content li { font-size: 1.1rem; }
+}
